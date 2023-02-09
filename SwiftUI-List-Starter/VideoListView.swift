@@ -14,28 +14,29 @@ struct VideoListView: View {
         
         NavigationView {
             List(videos) { video in
-                HStack {
-                    Image(video.imageName)
-                        .resizable()
-                        .scaledToFit()
-                        .frame(height: 70)
-                        .cornerRadius(4)
-                    
-                    VStack(alignment: .leading, spacing: 4) {
-                        Text(video.title)
-                            .fontWeight(.semibold)
-                            .lineLimit(2) // Let it go two lines and then it ...
-                            .minimumScaleFactor(0.7)
+                NavigationLink(destination: VideoDetailView(video: video)) {
+                    HStack {
+                        Image(video.imageName)
+                            .resizable()
+                            .scaledToFit()
+                            .frame(height: 70)
+                            .cornerRadius(4)
                         
-                        Text(video.uploadDate)
-                            .font(.subheadline)
-                            .foregroundColor(.secondary)
-                        
-                    }
-                }
-                    .padding(.vertical, 12)
-            }.background(Color.red)
-            .navigationTitle("Top 10 Videos")
+                        VStack(alignment: .leading, spacing: 4) {
+                            Text(video.title)
+                                .fontWeight(.semibold)
+                                .lineLimit(2) // Let it go two lines and then it ...
+                                .minimumScaleFactor(0.7)
+                            
+                            Text(video.uploadDate)
+                                .font(.subheadline)
+                                .foregroundColor(.secondary)
+                            
+                        }
+                    } .padding(.vertical, 12)
+                } .navigationTitle("Top 10 Videos")
+            }
+               
         }
     }
 }
