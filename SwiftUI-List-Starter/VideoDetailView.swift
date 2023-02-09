@@ -2,7 +2,7 @@
 //  VideoDetailView.swift
 //  SwiftUI-List-Starter
 //
-//  Created by Sushil Dhital on 09/02/2023.
+//  Created by Divya Panthi on 09/02/2023.
 //
 
 import SwiftUI
@@ -45,21 +45,29 @@ struct VideoDetailView: View {
             Spacer()
             
             Link(destination: video.url) {
-                Text("Watch Now")
-                    .fontWeight(.bold)
-                    .frame(width: 250, height: 50)
-                    .background(Color.red)
-                    .foregroundColor(Color.white)
-                    .cornerRadius(16)
-                
+                ButtonView(title: "Watch Now")
             }
             
         }
     }
 }
 
+
+
 struct VideoDetailView_Previews: PreviewProvider {
     static var previews: some View {
         VideoDetailView(video: VideoList.topTen.first!)
+    }
+}
+
+struct ButtonView: View {
+    var title: String
+    var body: some View {
+        Text(title)
+            .fontWeight(.bold)
+            .frame(width: 250, height: 50)
+            .background(Color.red)
+            .foregroundColor(Color.white)
+            .cornerRadius(16)
     }
 }
